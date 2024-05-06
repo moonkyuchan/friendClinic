@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* @font-face {
+  font-family: "NanumGothicEco";
+  src: url("../public/font/NanumGothicEco.ttf") format("ttf");
+} */
+
+/* 
+@font-face {
+  font-family: "NanumGothicEcoExtraBold";
+  src: url("../public/font/NanumGothicEcoExtraBold.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: "NanumGothicEcoBold";
+  src: url("../public/font/NanumGothicEcoBold.ttf") format("ttf");
+} */
