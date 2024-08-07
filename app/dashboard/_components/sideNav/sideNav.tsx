@@ -16,7 +16,6 @@ const links = [
 
 export default function SideNav() {
   const pathname = usePathname();
-  console.log(pathname);
   return (
     <div className="flex h-full flex-col px-3 py-4 md:px-3 md:space-y-2">
       <div className="flex items-end justify-center h-20 text-white bg-primary rounded-md p-4 text-3xl md:h-40 ">
