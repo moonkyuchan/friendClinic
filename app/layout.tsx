@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import "@/css/globals.css";
+import { fontPretendard } from "@/css/font";
+import Header from "@/app/_components/header/Header";
+import Footer from "app/_components/footer/Footer";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -13,7 +16,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="font-gothic">{children}</body>
+      <body className={`${fontPretendard.className} font-pretendard`}>
+        <Header />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }

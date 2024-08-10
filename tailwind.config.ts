@@ -14,7 +14,7 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       fontFamily: {
-        gothic: ["NanumGothicEco"],
+        pretendard: ["var(--font-pretendard)"],
       },
       colors: {
         primary: "#00A9E4",
