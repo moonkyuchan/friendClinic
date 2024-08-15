@@ -1,13 +1,79 @@
-import Menu from "./components/Menu";
+"use client";
+import { useState } from "react";
+import AppBar from "@mui/material/AppBar";
+import Popover from "@mui/material/Popover";
+import Typography from "@mui/material/Typography";
+import Grid from "@mui/material/Grid";
+
+import { menuList } from "./lib/menuList";
 
 export default function Header() {
+  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+  const open = Boolean(anchorEl);
+
+  const handlePopoverOpen = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handlePopoverClose = () => {
+    setAnchorEl(null);
+  };
+
+  console.log(anchorEl);
+
   return (
-    <header className="fixed bg-red-100 w-full h-[100px] px-10 py-2">
-      <div className="flex w-full h-full items-center">
-        <div className="basis-2/12 text-center bg-red-300">벗이비인후과</div>
-        <Menu />
-        <div className="basis-2/12 text-center bg-red-500">로그인/회원가입</div>
-      </div>
-    </header>
+    <AppBar
+      position="fixed"
+      sx={{ height: "100px", color: "black", backgroundColor: "white" }}
+    >
+      <Grid
+        container
+        alignItems={"center"}
+        sx={{ height: "100%", padding: "0 50px" }}
+      >
+        <Grid item xs>
+          <Typography variant="h3" fontWeight={800} component="div">
+            Friend Clinic
+          </Typography>
+        </Grid>
+        <Grid item xs={6}>
+          <Grid container alignItems="center" justifyContent="space-around">
+            {menuList.map((ele) => {
+              return (
+                <Typography
+                  key={ele.id}
+                  fontWeight={"700"}
+                  component="span"
+                  sx={{
+                    position: "relative",
+                    cursor: "pointer",
+                    "&:hover": {
+                      color: "primary.main",
+                      "&::after": {
+                        content: '""',
+                        position: "absolute",
+                        bottom: -2,
+                        left: 0,
+                        width: "100%",
+                        height: "2px",
+                        backgroundColor: "primary.main",
+                        transform: "scaleX(1)", // 밑줄 보이게 하기
+                        transformOrigin: "bottom left",
+                      },
+                    },
+                  }}
+                >
+                  {ele.name}
+                </Typography>
+              );
+            })}
+          </Grid>
+        </Grid>
+        <Grid item xs>
+          <Grid container alignItems="center" justifyContent="center">
+            로그인 | 회원가입
+          </Grid>
+        </Grid>
+      </Grid>
+    </AppBar>
   );
 }

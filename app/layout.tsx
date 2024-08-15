@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
-import "@/css/globals.css";
-import { fontPretendard } from "@/css/font";
+
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
+import { ThemeProvider } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+import theme from "@/css/theme";
+
 import Header from "@/app/_components/header/Header";
 import Footer from "app/_components/footer/Footer";
 
@@ -16,11 +20,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${fontPretendard.className} font-pretendard`}>
-        <Header />
-        {children}
-        <Footer />
-      </body>
+      <AppRouterCacheProvider>
+        <body>
+          <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <Header />
+            {children}
+            <Footer />
+          </ThemeProvider>
+        </body>
+      </AppRouterCacheProvider>
     </html>
   );
 }
