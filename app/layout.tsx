@@ -6,6 +6,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import theme from "@/css/theme";
 
 import Header from "@/app/_components/header/Header";
+import Hedaer2 from "@/app/_components/header/Header copy";
 import Footer from "app/_components/footer/Footer";
 
 export const metadata: Metadata = {
@@ -24,7 +25,8 @@ export default function RootLayout({
         <body>
           <ThemeProvider theme={theme}>
             <CssBaseline />
-            <Header />
+            <Hedaer2 />
+            {/* <Header /> */}
             {children}
             <Footer />
           </ThemeProvider>

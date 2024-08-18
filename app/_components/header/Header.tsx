@@ -5,7 +5,7 @@ import Popover from "@mui/material/Popover";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 
-import { menuList } from "./lib/menuList";
+import { menuList } from "./lib/data";
 
 export default function Header() {
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);

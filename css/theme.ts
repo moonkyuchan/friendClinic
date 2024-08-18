@@ -9,6 +9,14 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           boxShadow: "none",
+          backgroundColor: "#ffffff",
+        },
+      },
+    },
+    MuiContainer: {
+      styleOverrides: {
+        root: {
+          backgroundColor: "#ffffff",
         },
       },
     },

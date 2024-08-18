@@ -1,4 +1,4 @@
-import { menuList } from "../lib/menuList";
+import { menuList } from "../lib/data";
 
 export default function Menu() {
   return (
