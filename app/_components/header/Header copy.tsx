@@ -15,50 +15,60 @@ import {
 } from "@mui/material";
 
 import { menuList } from "./lib/data";
-import { height } from "@mui/system";
+
+import HoverTypography from "../common/typography/HoverTypography";
 
 export default function Header() {
+  const [isHovering, setIsHovering] = useState(false);
+  console.log(isHovering);
+
+  const handleMouseOver = () => {
+    setIsHovering(true);
+  };
+
+  const handleMouseOut = () => {
+    setIsHovering(false);
+  };
+
   return (
-    <ExpandableBox>
+    <ExpandableBox onMouseOut={handleMouseOut}>
       <Container sx={{ height: "inherit" }}>
-        <Grid container sx={{ backgroundColor: "red", height: "inherit" }}>
-          <Grid
-            item
-            flex={1}
-            sx={{ backgroundColor: "blue" }}
-            alignContent={"center"}
-          >
-            <Box>하하하</Box>
-          </Grid>
-          <Grid item flex={1}>
-            <Box>하하하</Box>
-          </Grid>
-          <Grid item flex={1}>
-            <Box>하하하</Box>
-          </Grid>
-          <Grid item flex={1}>
-            <Box>하하하</Box>
-          </Grid>
-          <Grid item flex={1}>
-            <Box>하하하</Box>
-          </Grid>
+        <Grid container>
+          {menuList.map((ele) => {
+            return (
+              <Grid
+                container
+                key={ele.id}
+                flexDirection={"column"}
+                justifyContent={"center"}
+                alignItems={"center"}
+                flex={1}
+              >
+                <Grid sx={{ height: "100px", lineHeight: "100px" }}>
+                  <HoverTypography>
+                    <span onMouseOver={handleMouseOver}>{ele.name}</span>
+                  </HoverTypography>
+                </Grid>
+                <Grid
+                  sx={{
+                    height: "150px",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    gap: 1,
+                  }}
+                >
+                  <HoverTypography>이기호</HoverTypography>
+                  <HoverTypography>양영상</HoverTypography>
+                  <HoverTypography>문규찬</HoverTypography>
+                  <HoverTypography>하하</HoverTypography>
+                  <HoverTypography>하하</HoverTypography>
+                </Grid>
+              </Grid>
+            );
+          })}
         </Grid>
       </Container>
-      {/* <Grid
-        container
-        alignItems="center"
-        justifyContent={"center"}
-        columnGap={15}
-        sx={{ height: "100px" }}
-      >
-        {menuList.map((ele) => {
-          return (
-            <Grid item key={ele.id}>
-              <HoverTypography>{ele.name}</HoverTypography>
-            </Grid>
-          );
-        })}
-      </Grid> */}
     </ExpandableBox>
   );
 }
@@ -74,28 +84,6 @@ const ExpandableBox = styled(Box)(({ theme }: { theme: Theme }) => ({
   overflow: "hidden",
   transition: "height 0.3s ease", // 높이가 부드럽게 변하도록 설정
   "&:hover": {
-    height: "500px", // 마우스를 올리면 높이가 500px로 확장
-  },
-}));
-
-const HoverTypography = styled(Box)(({ theme }: { theme: Theme }) => ({
-  alignItems: "center",
-  color: "black",
-  position: "relative",
-  cursor: "pointer",
-  fontWeight: 700,
-  "&:hover": {
-    color: theme.palette.primary.main,
-    "&::after": {
-      content: '""',
-      position: "absolute",
-      bottom: -2,
-      left: 0,
-      width: "100%",
-      height: "2px",
-      backgroundColor: theme.palette.primary.main,
-      transform: "scaleX(1)", // 밑줄 보이게 하기
-      transformOrigin: "bottom left",
-    },
+    height: "300px", // 마우스를 올리면 높이가 500px로 확장
   },
 }));
